@@ -1,5 +1,5 @@
 """Creates a unigram model"""
-
+import argparse
 
 def train(training_file, model_file):
     counts = dict()
@@ -24,8 +24,13 @@ def train(training_file, model_file):
 
 
 if __name__ == "__main__":
-    training_file = "../../data/wiki-en-train.word"
-    model_file = "../../model/wiki-en-train.word.unigram.model"
+    # training_file = "../../data/wiki-en-train.word"
+    # model_file = "../../model/wiki-en-train.word.unigram.model"
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--training-file", type=str)
+    parser.add_argument("--model-file", type=str)
+    args = parser.parse_args()
+
     print("train...")
-    train(training_file, model_file)
+    train(args.training_file, args.model_file)
     print("train over")
